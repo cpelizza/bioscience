@@ -1,0 +1,10 @@
+n_latent: 10
+n_epochs: 400
+seed: 456
+batch_key: batch
+early_stopping: false
+early_stopping_patience: 20
+adata: /mnt/lustre/scratch/nlsas/home/res/cnag71/resh000982/bioscience/data/full_object_phenotype.h5ad
+results_dir: /mnt/netapp1/Store_RES/home/res/cnag71/resh000982/projects/bioscience/results
+startup_jitter_seconds: 5.0
+object: undefined

@@ -1,0 +1,28 @@
+[workspace]
+channels = ["conda-forge", "pytorch", "nvidia"]
+name = "bioscience"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[activation.env]
+PYTHONPATH = "${PROJECT_ROOT}"
+
+[dependencies]
+python = ">=3.12,<3.15"
+marimo = ">=0.23.8,<0.24"
+pyprojroot = ">=0.3.0,<0.4"
+tyro = ">=1.0.13,<2"
+wandb = ">=0.12.10"
+omegaconf = ">=2.3.0,<3"
+pytorch = {version = ">=2.0,<3", channel = "pytorch"}
+pytorch-cuda = {version = "12.4.*", channel = "pytorch"}
+plottable = ">=0.1.5,<0.2"
+altair = ">=6.2.1,<7"
+plotly = ">=6.8.0,<7"
+pip = ">=26.1.2,<27"
+pandas = "<=2.2.3"
+
+[pypi-dependencies]
+drvi-py = ">=0.2.5, <0.3"

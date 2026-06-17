@@ -1,0 +1,26 @@
+# pixi environments
+.pixi/*
+!.pixi/config.toml
+
+src/bioscience.egg-info/
+
+# python cache
+__pycache__/
+*.pyc
+
+# logs and outputs
+logs/
+wandb/
+**/wandb/
+
+# marimo sessions
+__marimo__/
+
+# secrets
+github_key
+github_key.pub
+
+# large binaries
+*.pt
+*.h5ad
+*.pdf
