@@ -10,8 +10,9 @@ def _():
     import anndata as ad
     import os
     from pyprojroot import here
+    import scanpy as sc
 
-    return ad, here, os, plotting
+    return ad, here, os, plotting, sc
 
 
 @app.cell
@@ -48,7 +49,7 @@ def _(ad, data_path):
 @app.cell
 def _(here, os):
     # load gene names file
-    with open(os.path.join(here(), "results/L40_S123_260611111342/genes.txt"), "r", encoding = "utf-8") as f:
+    with open(os.path.join(here(), "genes.txt"), "r", encoding = "utf-8") as f:
         text = f.read()
 
     #make it as a list
@@ -249,6 +250,47 @@ def _(adata):
 @app.cell
 def _(adata, drvi):
     drvi.utils.plotting.plot_latent_dims_in_heatmap(embed = adata, categorical_column = "lv1", title_col = "title", figsize = (20,5))
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    # UMAP
+    """)
+    return
+
+
+@app.cell
+def _(adata, drvi):
+    drvi.utils.pl.plot_latent_dims_in_umap(adata, dim_subset=["DR 1", "DR 2"])
+    return
+
+
+@app.cell
+def _(drvi, embed):
+    drvi.utils.pl.plot_latent_dims_in_umap(embed, dim_subset=["DR 1", "DR 2"])
+    return
+
+
+@app.cell
+def _(adata, sc):
+    sc.pl.umap(adata, color = "lv1")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    # Per Sample Plot
+    """)
+    return
+
+
+
+@app.cell
+def _(adata, plotting):
+    plotting.plot_sample_all_latents_xy_centroids(adata=adata,sample="110", use_pheno_prefix=False, size = 0.1)
     return
 
 
