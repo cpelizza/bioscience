@@ -1,7 +1,7 @@
 import marimo
 
 __generated_with = "0.23.9"
-app = marimo.App(width="medium")
+app = marimo.App(width="full")
 
 
 @app.cell
@@ -159,6 +159,33 @@ def _(here, interpretability_score, os):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
+    # Gene Scores
+
+    This section shows gene-level score landscapes for each latent dimension.
+    It helps identify genes that most strongly define the latent factors
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Each point is a gene, positioned by the two interpretability scores.
+    Point size encodes combined importance.
+    """)
+    return
+
+
+@app.cell
+def _(adata, genes, plotting):
+    fig = plotting.plot_both_scores(embed=adata,gene_names=genes, hide_vanished=True, ncols = 5)
+    fig[0]
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
     # Spatial Plot
 
         This section projects a selected latent dimension onto spatial coordinates.
@@ -285,7 +312,6 @@ def _(mo):
     # Per Sample Plot
     """)
     return
-
 
 
 @app.cell

@@ -509,15 +509,29 @@ def plot_both_scores(embed,
             "latent":False
     }
     )
+    fig.update_yaxes(showticklabels=True, title="")
     fig.for_each_annotation(
     lambda a: a.update(
-        text=a.text.split("=")[-1]
-    )
-    
-)
-    fig.update_layout(height=400 * 5)
-    fig.update_xaxes(categoryorder="array", categoryarray=latents_sorted, showticklabels=True, title = "Min \n Relative LFC")
-    fig.update_yaxes(showticklabels=True, title = "Max \n LFC")
+        text=a.text.split("=")[-1])
+        )
+
+    fig.update_layout(height=400 * 5,
+    annotations=[
+        a for a in fig.layout.annotations  # keep the facet labels
+        ] + [
+            dict(
+                text="LFC",
+                x=-0.04,            # nudge left of the plot area
+                xref="paper",
+                y=0.5,
+                yref="paper",
+                showarrow=False,
+                textangle=-90,
+                font=dict(size=14),
+                )
+            ],
+        )
+    fig.update_xaxes(showticklabels=True, title="Relative LFC")
 
     
     
