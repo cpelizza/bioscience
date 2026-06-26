@@ -61,6 +61,18 @@ embed.h5ad — latent embedding produced by the trained DRVI model,
 model checkpoints or serialized model artifacts,
 gene lists and derived outputs used for interpretation and visualization.
 
+## html/
+Contains exported HTML versions of the notebooks and analytical reports. These files provide a browser-based representation of the workflow, figures, and intermediate results, facilitating easier inspection and sharing of the analysis without requiring notebook execution.
+
+## Shell scripts (*.sh)
+The repository includes shell scripts such as:
+
+run_compute_embeds.sh
+run_drvi.sh
+run_more_drvi.sh
+
+These scripts automate model training and embedding generation, likely by launching DRVI runs with predefined configurations and execution parameters. They are intended for batch or cluster-style execution of the analysis pipeline.
+
 ### genes.txt
 A list of gene symbols used for downstream interpretation and figure generation.
 
