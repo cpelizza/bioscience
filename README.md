@@ -21,6 +21,7 @@ To reproduce the analysis, install Pixi and run:
 ```bash
 pixi install
 pixi shell
+```
 
 ## Repository Structure
 
